@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <ion-title class="title">Registro</ion-title>
+    <p class="subTitle">Porfavor rellene los campos como corresponde</p>
+  </div>
+
+  <form [formGroup]="regForm" novalidate>
+    <div class="ion-padding">
+
+      <ion-item>
+        <ion-input formControlName="rut" placeholder="rut" class="input"></ion-input>
+        <ion-icon name="person-outline" slot="end"></ion-icon>
+      </ion-item>
+      <div *ngIf="this.regForm.controls?.['rut'].touched && this.regForm.controls?.['rut'].invalid">
+        <ion-text *ngIf="errorControl.clave.errors?.required">
+          Se necesita rut
+        </ion-text>
+        <ion-text *ngIf="errorControl.rut.errors?.pattern">
+          Formato: 12345678-N
+        </ion-text>
+      </div>
+
+      <ion-item>
+        <ion-input formControlName="nombreCompleto" placeholder="nombreCompleto" class="input"></ion-input>
+        <ion-icon name="person-outline" slot="end"></ion-icon>
+      </ion-item>
+      <div *ngIf="this.regForm.controls?.['nombreCompleto'].touched && this.regForm.controls?.['nombreCompleto'].invalid">
+        <ion-text *ngIf="errorControl.nombreCompleto.errors?.required">
+          Se necesita su nombre completo
+        </ion-text>
+      </div>
+
+      <ion-item>
+        <ion-input formControlName="correo" placeholder="correo" class="input"></ion-input>
+        <ion-icon name="person-outline" slot="end"></ion-icon>
+      </ion-item>
+      <div *ngIf="this.regForm.controls?.['correo'].touched && this.regForm.controls?.['correo'].invalid">
+        <ion-text *ngIf="errorControl.correo.errors?.required">
+          Se necesita correo
+        </ion-text>
+        <ion-text *ngIf="errorControl.correo.errors?.pattern">
+          Se necesita correo valido texto&#64;texto.dominio
+        </ion-text>
+      </div>
+
+      <ion-item>
+        <ion-input formControlName="clave" placeholder="clave" class="input"></ion-input>
+        <ion-icon name="lock-closed-outline" slot="end"></ion-icon>
+      </ion-item>
+      <div *ngIf="this.regForm.controls?.['clave'].touched && this.regForm.controls?.['clave'].invalid">
+        <ion-text *ngIf="errorControl.clave.errors?.required">
+          Se necesita clave
+        </ion-text>
+        <ion-text *ngIf="errorControl.clave.errors?.pattern">
+          Formato (un número y una letra mayúscula y minúscula, y al menos 8 o más caracteres)
+        </ion-text>
+      </div>
+
+      <div class="singinLink">
+        <p>Ya tienes una cuenta?, <a [routerLink]="['/login']">Inicia sesión</a></p>
+      </div>
+    </div>
+    <ion-fab horizontal="end" style="margin: 30px;">
+      <br>
+  
+        <ion-fab-button (click)="singUp()">
+          <ion-icon name="chevron-forward"></ion-icon>
+        </ion-fab-button>
+  
+    </ion-fab>
+  </form>
+</ion-content>

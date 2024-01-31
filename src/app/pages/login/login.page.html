@@ -1,0 +1,56 @@
+<header class="header"></header>
+
+<ion-content [fullscreen]="true" class="header">
+  <div>
+    <ion-title class="title">Bienvenido</ion-title>
+    <p class="subTitle">Porfavor iniciar sesión</p>
+  </div>
+
+  <form [formGroup]="loginForm" novalidate>
+    <div class="ion-padding">
+
+      <ion-item>
+        <ion-input formControlName="correo" placeholder="correo" class="input"></ion-input>
+        <ion-icon name="person-outline" slot="end"></ion-icon>
+      </ion-item>
+      <div *ngIf="this.loginForm.controls?.['correo'].touched && this.loginForm.controls?.['correo'].invalid">
+        <ion-text *ngIf="errorControl.correo.errors?.required">
+          Se necesita correo
+        </ion-text>
+        <ion-text *ngIf="errorControl.correo.errors?.pattern">
+          Se necesita correo valido texto&#64;texto.dominio
+        </ion-text>
+      </div>
+
+      <ion-item>
+        <ion-input formControlName="clave" placeholder="clave" class="input" type="password"></ion-input>
+        <ion-icon name="lock-closed-outline" slot="end"></ion-icon>
+      </ion-item>
+      <div *ngIf="this.loginForm.controls?.['clave'].touched && this.loginForm.controls?.['clave'].invalid">
+        <ion-text *ngIf="errorControl.clave.errors?.required">
+          Se necesita clave
+        </ion-text>
+        <ion-text *ngIf="errorControl.clave.errors?.pattern">
+          Formato (un número y una letra mayúscula y minúscula, y al menos 8 o más caracteres)
+        </ion-text>
+      </div>
+
+      <div class="forgotpassword">
+        <br>
+        <a [routerLink]="['/reset-pass']">¿Olvidaste tu contraseña?</a>
+      </div>
+      <div class="singupLink">
+        <p>Eres nuevo?, <a [routerLink]="['/singup']">Registrarse</a></p>
+      </div>
+    </div>
+    <ion-fab horizontal="end" style="margin: 30px;">
+      <br>
+  
+        <ion-fab-button (click)="loginIn()">
+          <ion-icon name="chevron-forward"></ion-icon>
+        </ion-fab-button>
+  
+    </ion-fab>
+
+  </form>
+</ion-content>

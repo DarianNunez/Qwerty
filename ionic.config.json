@@ -1,0 +1,7 @@
+{
+  "name": "TeLlevoError",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

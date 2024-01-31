@@ -1,0 +1,13 @@
+<!-- Solo el alumno debe verlo -->
+<ion-card class="centrar">
+  <div style="text-align: center;">
+    <ion-button id="lector">
+      <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+    </ion-button>
+    <ion-alert trigger="lector" header="Ejemplo de camara" [buttons]="alertButtons"></ion-alert>
+  </div>
+</ion-card>
+
+<ion-item>
+  <ion-button (click)="desconectar()">Salir</ion-button> 
+  </ion-item>
